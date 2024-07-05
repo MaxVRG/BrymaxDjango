@@ -40,30 +40,34 @@
         </div>
     </nav>
 
-    <div id="cart">
-        <table>
-            <thead>
-                <tr>
-                    <th>Imagen</th>
-                    <th>Producto</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
-                    <th>Total</th>
-                    <th>Eliminar</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Productos carro -->
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="4"></td>
-                    <td id="total-amount">$0</td>
-                    <td><button id="checkout-btn">Ir al Pago</button></td>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrito de Compras</title>
+</head>
+<body>
+    <h1>Carrito de Compras</h1>
+    <table>
+        <tr>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+        </tr>
+        {% for producto in productos %}
+        <tr>
+            <td>{{ producto.nombre }}</td>
+            <td>${{ producto.precio }}</td>
+            <td>{{ producto.cantidad }}</td>
+            <td>${{ producto.subtotal }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>Total: ${{ total }}</h2>
+</body>
+</html>
+
 
     <footer class="footer mt-auto py-3">
         <div class="container">
