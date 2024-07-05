@@ -15,7 +15,4 @@ class ContactoForm(forms.ModelForm):
 class MantencionForm(forms.ModelForm):
     class Meta:
         model = Mantencion
-        fields = ['nombre', 'email', 'telefono', 'direccion']
-        widgets = {
-            'mensaje': forms.Textarea(attrs={'rows': 5}),
-        }
+        fields = ['nombre', 'email', 'telefono', 'tipo_mantencion', 'direccion', 'fecha']

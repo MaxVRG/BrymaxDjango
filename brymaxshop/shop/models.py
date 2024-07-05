@@ -35,11 +35,15 @@ class Contacto(models.Model):
         return self.nombre
     
 
+
+    
 class Mantencion(models.Model):
-    nombre = models.CharField(max_length=100)
+    nombre = models.CharField(max_length=101)
     email = models.EmailField()
     telefono = models.CharField(max_length=20)
-    direccion = models.CharField(max_length=255)
+    tipo_mantencion = models.CharField(max_length=20, choices=[('domicilio', 'A domicilio'), ('local', 'En el local')])
+    direccion = models.CharField(max_length=255, blank=True, null=True)
+    fecha = models.DateField()
 
     def __str__(self):
         return self.nombre
