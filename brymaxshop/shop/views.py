@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Producto, ItemCarrito
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from .forms import ContactoForm
 from .forms import MantencionForm
 
 # Create your views here.
@@ -112,15 +113,26 @@ def eliminar_del_carrito(request, producto_id):
     return redirect('carrito')
 
 
+def contacto(request):
+    if request.method == 'POST':
+        form = ContactoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, '¡Tu mensaje ha sido enviado con éxito!')
+            return redirect('contacto')  # Redirige a la misma página
+    else:
+        form = ContactoForm()
+    
+    return render(request, 'shop/contacto.html', {'form': form})
 
 
 def agendar_mantencion(request):
     if request.method == 'POST':
         form = MantencionForm(request.POST)
         if form.is_valid():
-            form.save()  # Guarda el formulario si es válido
-            messages.success(request, '¡Mantención agendada correctamente!')  # Mensaje de éxito
-            return redirect('index')  # Redirige a donde desees luego de guardar
+            form.save()
+            messages.success(request, '¡Mantención agendada correctamente!')
+            return redirect('index')  # Redirige a la página de inicio o donde prefieras
     else:
         form = MantencionForm()
     

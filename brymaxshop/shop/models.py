@@ -25,14 +25,21 @@ class ItemCarrito(models.Model):
         return self.producto.precio * self.cantidad
 
 
+class Contacto(models.Model):
+    nombre = models.CharField(max_length=100)
+    email = models.EmailField()
+    asunto = models.CharField(max_length=200)
+    mensaje = models.TextField()
+
+    def __str__(self):
+        return self.nombre
+    
 
 class Mantencion(models.Model):
     nombre = models.CharField(max_length=100)
     email = models.EmailField()
     telefono = models.CharField(max_length=20)
-    tipo_mantencion = models.CharField(max_length=20, choices=[('domicilio', 'A domicilio'), ('local', 'En el local')])
-    direccion = models.CharField(max_length=255, blank=True, null=True)
-    fecha = models.DateField()
+    direccion = models.CharField(max_length=255)
 
     def __str__(self):
         return self.nombre

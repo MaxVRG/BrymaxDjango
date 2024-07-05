@@ -13,10 +13,10 @@ urlpatterns = [
     path('info/', views.info, name='info'),
     path('contacto/', views.contacto, name='contacto'),
     path('carrito/', views.carrito, name='carrito'),
-
+    path('mantencion/', views.agendar_mantencion, name='agendar_mantencion'),
     path('añadir/<int:producto_id>/', views.añadir_al_carrito, name='añadir_al_carrito'),
     path('eliminar/<int:producto_id>/', views.eliminar_del_carrito, name='eliminar_del_carrito'),
-    path('mantencion/', views.agendar_mantencion, name='agendar_mantencion'),
+    path('contacto/', views.contacto, name='contacto'),
 
 ]
 if settings.DEBUG:
