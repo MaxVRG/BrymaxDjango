@@ -1,14 +1,14 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="utf-8">
-    <title>Carro de Compras</title>
+    <meta charset="UTF-8">
+    <title>Carrito de Compras</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static '/css/stylecarro.css' %}">
-    <link rel="stylesheet" href="{% static '/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/stylecarro.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
@@ -17,7 +17,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="{% static '/img/logo.png' %}" alt="Logo" width="50" height="40" class="d-inline-block align-top me-2">
+                <img src="{% static 'img/logo.png' %}" alt="Logo" width="50" height="40" class="d-inline-block align-top me-2">
                 Brymax PC
             </a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -26,48 +26,56 @@
                         <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'index' %}#tienda">Productos</a>
+                        <a class="nav-link" href="{% url 'index' %}#tienda">Servicios</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{% url 'info' %}">Sobre Nosotros</a>
-                  </li>
+                        <a class="nav-link" href="{% url 'info' %}">Sobre Nosotros</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'contacto' %}">Contacto</a>
                     </li>
                 </ul>                                       
-                <a class="nav-link" href="{% url 'carrito' %}"><img src="{% static '/img/carro.svg' %}"></a>
+                <a class="nav-link" href="{% url 'carrito' %}"><img src="{% static 'img/carro.svg' %}"></a>
             </div>
         </div>
     </nav>
 
-    <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Carrito de Compras</title>
-</head>
-<body>
-    <h1>Carrito de Compras</h1>
-    <table>
-        <tr>
-            <th>Producto</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
-            <th>Subtotal</th>
-        </tr>
-        {% for producto in productos %}
-        <tr>
-            <td>{{ producto.nombre }}</td>
-            <td>${{ producto.precio }}</td>
-            <td>{{ producto.cantidad }}</td>
-            <td>${{ producto.subtotal }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    <h2>Total: ${{ total }}</h2>
-</body>
-</html>
-
+    <div class="container mt-5">
+        <h1>Carrito de Compras</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio unitario</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in productos_carrito %}
+                <tr>
+                    <td>{{ item.nombre }}</td>
+                    <td>${{ item.precio }}</td>
+                    <td>{{ item.cantidad }}</td>
+                    <td>${{ item.subtotal }}</td>
+                    <td>
+                        <form action="{% url 'eliminar_del_carrito' item.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="3">Total</td>
+                    <td>${{ total }}</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Total: ${{ total }}</h2>
+    </div>
 
     <footer class="footer mt-auto py-3">
         <div class="container">
@@ -84,7 +92,7 @@
                     <h5>Enlaces Rápidos</h5>
                     <ul class="list-unstyled">
                         <li><a href="{% url 'index' %}">Inicio</a></li>
-                        <li><a href="{% url 'index' %}#tienda">Productos</a></li>
+                        <li><a href="{% url 'index' %}#tienda">Servicios</a></li>
                         <li><a href="{% url 'info' %}">Sobre Nosotros</a></li>
                         <li><a href="{% url 'contacto' %}">Contacto</a></li>
                     </ul>
@@ -98,9 +106,9 @@
     </footer>
     
     <script>
-        var staticUrl = "{% static '/img/productos/' %}";
+        var staticUrl = "{% static 'img/productos/' %}";
     </script>
 
-    <script src="{% static '/js/carrito.js' %}"></script>
+    <script src="{% static 'js/carrito.js' %}"></script>
 </body>
 </html>

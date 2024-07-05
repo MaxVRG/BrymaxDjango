@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0k3idwBhChCh4Xgd0dHdX5RbcGF5EM+stCW/nTQUm84Hkck4f8sEU" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <title>Equipos Nuevos</title>
+    <title>Productos</title>
     <style>
         .product {
             border: 1px solid #b2a8a8;
@@ -35,7 +35,7 @@
                   <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Inicio</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="{% url 'index' %}#tienda">Productos</a>
+                  <a class="nav-link" href="{% url 'index' %}#tienda">Servicios</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'info' %}">Sobre Nosotros</a>
@@ -82,7 +82,7 @@
 
 <div class="container">
   <section id="nuevos">
-      <h1 class="text-center">Equipos Nuevos</h1>
+      <h1 class="text-center">Productos</h1>
       <div id="catalog">
           {% for producto in productos %}
           <div class="product">
@@ -123,7 +123,7 @@
                 <h5>Enlaces Rápidos</h5>
                 <ul class="list-unstyled">
                     <li><a href="{% url 'index' %}">Inicio</a></li>
-                    <li><a href="{% url 'index' %}#tienda">Productos</a></li>
+                    <li><a href="{% url 'index' %}#tienda">Servicios</a></li>
                     <li><a href="{% url 'info' %}">Sobre Nosotros</a></li>
                     <li><a href="{% url 'contacto' %}">Contacto</a></li>
                     <li><a href="{% url 'carrito' %}">Carrito de Compras</a></li>

@@ -26,7 +26,7 @@
                       <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Inicio</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="{% url 'index' %}#tienda">Productos</a>
+                      <a class="nav-link" href="{% url 'index' %}#tienda">Servicios</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'info' %}">Sobre Nosotros</a>
@@ -74,27 +74,18 @@
    
 <br>
 <br>
-  <!-- Card-->
-  <section id="tienda">
+<!-- Card-->
+<section id="tienda">
   <div class="container">
-    <div class="row align-items-center">
+    <h3 class="text-center">Nuestros Servicios</h3><br><br>     
+    <div class="row justify-content-center">   
       <div class="col-md-3">
         <div class="card" style="width: 18rem;">
-          <img src="{% static '/img/card1.jpg' %}" class="card-img-top" alt="..." height="200px" width="200px">
+          <img src="{% static '/img/pccon.jpg' %}" class="card-img-top" alt="..." height="200px" width="200px">
           <div class="card-body">
-            <h5 class="card-title">Equipos Nuevos</h5>
+            <h5 class="card-title">Catálogo Principal</h5>
             <p class="card-text">Nuestros principales productos del catálogo</p>
-            <a href="{% url 'nuevos' %}#nuevos" class="btn btn-primary">Visitar </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card" style="width: 18rem;">
-          <img src="{% static '/img/card2.avif' %}" class="card-img-top" alt="..." height="200px" width="200px">
-          <div class="card-body">
-            <h5 class="card-title">Equipos Usados</h5>
-            <p class="card-text">Nuestros principales productos del catálogo</p>
-            <a href="{% url 'usados' %}#usados" class="btn btn-primary">Visitar </a>
+            <a href="{% url 'nuevos' %}#nuevos" class="btn btn-primary">Visitar</a>
           </div>
         </div>
       </div>
@@ -104,23 +95,16 @@
           <div class="card-body">
             <h5 class="card-title">Mantenciones</h5>
             <p class="card-text">En nuestro local o en tu domicilio</p>
-            <a href="{% url 'mantencion' %}#mantencion" class="btn btn-primary">Visitar </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card" style="width: 18rem;">
-          <img src="{% static '/img/card4.jpg' %}" class="card-img-top" alt="..." height="200px" width="200px">  
-          <div class="card-body">
-            <h5 class="card-title">Consolas Portátiles</h5>
-            <p class="card-text">Las última generación de consolas portátiles</p>
-            <a href="{% url 'consolas' %}#consolas" class="btn btn-primary">Visitar </a>
+            <a href="{% url 'mantencion' %}#mantencion" class="btn btn-primary">Visitar</a>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+
+
 
 <br><br><br><br><br><br><br>
   <footer class="footer mt-auto py-3">
@@ -138,7 +122,7 @@
                 <h5>Enlaces Rápidos</h5>
                 <ul class="list-unstyled">
                     <li><a href="{% url 'index' %}">Inicio</a></li>
-                    <li><a href="{% url 'index' %}#tienda">Productos</a></li>
+                    <li><a href="{% url 'index' %}#tienda">Servicios</a></li>
                     <li><a href="{% url 'info' %}">Sobre Nosotros</a></li>
                     <li><a href="{% url 'contacto' %}">Contacto</a></li>
                 </ul>

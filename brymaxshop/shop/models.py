@@ -23,3 +23,16 @@ class ItemCarrito(models.Model):
 
     def subtotal(self):
         return self.producto.precio * self.cantidad
+
+
+
+class Mantencion(models.Model):
+    nombre = models.CharField(max_length=100)
+    email = models.EmailField()
+    telefono = models.CharField(max_length=20)
+    tipo_mantencion = models.CharField(max_length=20, choices=[('domicilio', 'A domicilio'), ('local', 'En el local')])
+    direccion = models.CharField(max_length=255, blank=True, null=True)
+    fecha = models.DateField()
+
+    def __str__(self):
+        return self.nombre
